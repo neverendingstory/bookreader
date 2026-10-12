@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' blob: data:; script-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; connect-src 'self' blob: data:; frame-src blob: data:;">
+<title>Book Reader</title>
+<link rel="stylesheet" href="style.css">
+<div id="drop">
+  <div class="card">
+    <h1>📖 Book Reader</h1>
+    <div class="home-grid">
+      <div id="home-add">
+        <div class="home-add-title">Open a new book</div>
+        <div id="drop-zone" data-tip="Drop a book file here">
+          <div class="drop-icon">📂</div>
+          <div class="drop-text">Drop file here</div>
+        </div>
+        <button id="pick" data-tip="Choose a book file">Choose file…</button>
+        <div class="hint">EPUB · MOBI · AZW3 · FB2 · CBZ · PDF</div>
+      </div>
+      <div id="home-shelf">
+        <div id="drop-shelf"></div>
+        <div id="home-shelf-empty" hidden>
+          <div class="home-add-title">📚 Library</div>
+          <div class="home-shelf-hint">No books yet.<br>Drop a file or click <b>Choose file…</b> to start.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="reader" hidden>
+  <div id="toolbar">
+    <button data-act="open" data-tip="Open file · O">📂</button>
+    <span class="sep"></span>
+    <button data-act="prev" data-tip="Previous page · ←">‹</button>
+    <input id="loc" type="range" min="0" max="1" step="any" value="0" data-tip="Drag to jump position">
+    <button data-act="next" data-tip="Next page · →">›</button>
+    <span class="sep"></span>
+    <button data-act="spread" data-tip="Toggle single / double page · S">单页</button>
+    <button data-act="fit" data-tip="Fit to width / page · W">宽度</button>
+    <button data-act="font-family" data-tip="Font family · F">Sans</button>
+    <button data-act="font-size" data-tip="Font size">M</button>
+    <button data-act="zoom-out" data-tip="Zoom out · −">−</button>
+    <span id="zoom-label">100%</span>
+    <button data-act="zoom-in" data-tip="Zoom in · +">+</button>
+    <span class="sep"></span>
+    <button data-act="toc" data-tip="Table of contents · C">📑</button>
+    <button data-act="search" data-tip="Search · /">🔍</button>
+    <button data-act="bookmark" data-tip="Bookmark · B">🔖</button>
+    <button data-act="tts" data-tip="Read aloud · R">🔊</button>
+    <button data-act="shelf" data-tip="Library · Shift+L">📚</button>
+    <span class="sep"></span>
+    <button data-act="theme" data-tip="Cycle theme · T">☀</button>
+  </div>
+  <div id="main">
+    <aside id="side-panel" hidden>
+      <div class="side-header">
+        <span id="side-title">Contents</span>
+        <button data-act="side-close" data-tip="Close · Esc">×</button>
+      </div>
+      <div id="side-body"></div>
+    </aside>
+    <div id="view-host">
+      <div id="click-prev" class="click-zone" data-tip="Previous page · ←"></div>
+      <div id="click-next" class="click-zone" data-tip="Next page · →"></div>
+    </div>
+  </div>
+</div>
+<input id="file" type="file" hidden accept=".epub,.mobi,.azw,.azw3,.fb2,.fbz,.cbz,.pdf">
+<script type="module" src="app.js"></script>
